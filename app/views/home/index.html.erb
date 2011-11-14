@@ -1,0 +1,6 @@
+<p>mongo DB test</p>
+<p><%= "There are" << @coll.count.to_s << "records. Here they are:" %></p>
+<% @coll.find.each do |doc| %>
+  <p><%= doc.inspect %></p>
+<% end %>
+  
