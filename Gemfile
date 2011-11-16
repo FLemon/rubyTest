@@ -1,6 +1,3 @@
-
-require 'mongo'
-
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
@@ -23,6 +20,9 @@ end
 gem 'jquery-rails'
 gem 'mongo_mapper'
 gem "rake", "0.8.7"
+
+gem 'rsruby'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

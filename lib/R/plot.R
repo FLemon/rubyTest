@@ -1,0 +1,20 @@
+myplot = function(x,y) {
+	ds <- data.frame(x = x, y = y)
+	
+	png("app/assets/images/R/plot.png")    
+	#plot(x, y)
+	fit <- nls(y ~ I(exp(1)^(a + b * x)), data = ds, start = list(a = 0,b = 1))
+	rss <- sum(residuals(fit)^2)
+	tss <- sum((y - mean(y))^2)
+	rsquare <- 1-(rss/tss)
+	#fit <- lm(x ~ y)
+	intercept <- round(summary(fit)$coefficients[1, 1], 4)
+	slope <- round(summary(fit)$coefficients[2, 1], 4)
+	plot(y ~ x, main = "Fitted exponential function", sub = "Blue: fit; green: known")
+	#abline(b, a,col="blue")
+	s <- seq(1,10, length=100)
+  lines(s, predict(fit, list(x = s)), lty = 1, col = "blue")
+  text(2, 400, paste("y =e^ (", intercept, " + ", slope, " * x)", sep = ""), pos = 4)
+	dev.off()
+	return (c(intercept,slope,rsquare))
+}
